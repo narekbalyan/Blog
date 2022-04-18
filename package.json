@@ -34,6 +34,6 @@
    "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
       "dev": "nodemon --legacy-watch ./src/server.ts",
-      "start": "npm run build && node"
+      "start": "docker-compose up"
    }
 }
