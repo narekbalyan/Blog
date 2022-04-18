@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  app:
+    env_file:
+      - .env
+    build:
+      context: .
+    restart: always
+    ports:
+      - "3000:3000"
+    container_name: app
+    depends_on:
+      - db
+    volumes:
+      - ./src/:/app/src/
+  db:
+    image: "postgres"
+    volumes:
+      - data-db:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=ocorlymedpdofe
+      - POSTGRES_PASSWORD=839bd8e921f26b467d524bac40fe74348e078515656dd86a51285e25e16b7d1d
+      - POSTGRES_DB=d3nf9v47flvprq
+volumes:
+  data-db:

@@ -1,0 +1,271 @@
+{
+    "definition": {
+        "info": {
+            "title": "Blog API",
+            "description": "Please first pass the registration and login than do your requests",
+            "version": "1.0.0"
+        },
+        "schemes": ["http", "https"],
+        "host": "localhost:3000",
+        "basePath": "/api",
+        "paths": {
+            "/register": {
+                "post": {
+                    "tags": [
+                        {
+                            "name": " registration"
+                        }
+                    ],
+                    "description": "Please register for further operations",
+                    "parameters": [
+                        {
+                            "in": "body",
+                            "name": "user credentials",
+                            "required": true,
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                        },
+                        "500": {
+                            "description": "Server error"
+                        }
+                    }
+                }
+            },
+            "/login": {
+                "post": {
+                    "tags": [
+                        {
+                            "name": " login"
+                        }
+                    ],
+                    "description": "Please login with your login and password",
+                    "parameters": [
+                        {
+                            "in": "body",
+                            "name": "login credentials",
+                            "required": true,
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                        },
+                        "500": {
+                            "description": "Server error"
+                        }
+                    }
+                }
+            },
+            "/records": {
+                "get": {
+                    "tags": [
+                        {
+                            "name": " records"
+                        }
+                    ],
+                    "description": "Get all records",
+                    "parameters": [
+                        {
+                            "in": "header",
+                            "name": "Authorization",
+                            "required": true
+                        }
+                    ],
+                    "responses": {  
+                        "200": {
+                            "description": "Gets array of records's data and user_id",
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "record": {
+                                            "type": "string"
+                                        },
+                                        "record_id": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "500": {
+                            "description": "Server error"
+                        }    
+                    }
+                },
+                "post": {
+                    "tags": [
+                        {
+                            "name": " records"
+                        }
+                    ],
+                    "description": "Create record",
+                    "parameters": [
+                        {
+                            "in": "header",
+                            "name": "Authorization",
+                            "required": true
+                        },
+                        {
+                            "in": "body",
+                            "name": "body",
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "record": {
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                        },
+                        "500": {
+                            "description": "Server error"
+                        }
+                    }
+                }
+            },
+            "/records/{id}": {
+                "patch": {
+                    "tags": [
+                        {
+                            "name": " records"
+                        }
+                    ],
+                    "description": "Edit record by id",
+                    "parameters": [
+                        {
+                            "in": "header",
+                            "name": "Authorization",
+                            "required": true
+                        },
+                        {
+                            "name": "id",
+                            "in": "path",
+                            "description": "The record id that need to be edited",
+                            "required": true,
+                            "type": "string"
+                        },
+                        {
+                            "in": "body",
+                            "name": "record info",
+                            "schema": {
+                                "properties": {
+                                    "record": {
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                        },
+                        "500": {
+                            "description": "Server error"
+                        }
+                    }
+                },
+                "delete": {
+                    "tags": [
+                        {
+                            "name": " records"
+                        }
+                    ],
+                    "description": "Delete record by id",
+                    "parameters": [
+                        {
+                            "in": "header",
+                            "name": "Authorization",
+                            "required": true
+                        },
+                        {
+                            "name": "id",
+                            "in": "path",
+                            "description": "The record id that need to be deleted",
+                            "required": true,
+                            "type": "string"
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                        },
+                        "500": {
+                            "description": "Server error"
+                        }
+                    }
+                },
+                "get": {
+                    "tags": [
+                        {
+                            "name": " records"
+                        }
+                    ],
+                    "description": "Get record by id",
+                    "parameters":[
+                        {
+                            "in": "header",
+                            "name": "Authorization",
+                            "required": true
+                        },
+                        {
+                            "name": "id",
+                            "in": "path",
+                            "description": "The record id that need to get",
+                            "required": true,
+                            "type": "string"
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Gets record info",
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "record_id": {
+                                        "type": "string"
+                                    },
+                                    "user_id": {
+                                        "type": "string"
+                                    },
+                                    "record": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "500": {
+                            "description": "Server error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "apis": []
+}
