@@ -6,7 +6,7 @@
             "version": "1.0.0"
         },
         "schemes": ["http", "https"],
-        "host": "localhost:3000",
+        "host": "https://blog-for-welbex.herokuapp.com/",
         "basePath": "/api",
         "paths": {
             "/register": {
