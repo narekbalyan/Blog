@@ -14,8 +14,9 @@ export const AppDataSource = new DataSource({
     password: process.env.TYPEORM_PASSWORD,
     database: process.env.TYPEORM_DATABASE,
     extra: {
-        ssl: true,
-        rejectUnauthorized: false
+        ssl: {
+            rejectUnauthorized: false
+        }
     },
     synchronize: true,
     logging: false,
